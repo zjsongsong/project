@@ -1,78 +1,59 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue'
+
+import {getcategory} from '@/apis/testAPI'
+
+import {onMounted, ref} from 'vue'
+
+const headList = ref([]);
+
+const getCategory = ()=>{
+  getcategory().then(res=>{
+    console.log(res)
+    if(res.data.code == 1){
+      headList.value = res.data.result
+    }
+  })
+}
+
+const clearCategory= ()=>{
+  headList.value = []
+}
+
+onMounted(()=>{
+  getCategory()
+})
 </script>
 
 <template>
-  <el-button type="primary">Primary</el-button>
+  <el-button @click="getCategory" type="primary">获取列表信息</el-button>
+  <el-button @click="clearCategory" type="primary">清空列表信息</el-button>
   <el-button type="success">success</el-button>
   <el-button type="warning">warning</el-button>
   <el-button type="danger">danger</el-button>
   <el-button type="error">error</el-button>
 
+  <ul class="headlist">
+    <li class="headlistitem" v-for="item in headList" :key="item.id">
+      <span>{{ item.name }}</span>
+      <img :src="item.picture" alt="">
+    </li>
+  </ul>
+
   <!-- <RouterView /> -->
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.headlistitem{
+  height: 120px;
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.headlistitem:last-child{
+  border-bottom: none;
 }
 </style>
