@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from '@/components/HelloWorld.vue'
 
 import {getcategory} from '@/apis/testAPI'
 
@@ -45,9 +44,21 @@ onMounted(()=>{
 </template>
 
 <style scoped>
+html, body{
+  height: 100%;
+  width: 100%;
+}
+.headlist{
+  padding: 0;
+  margin: 0;
+  border: 1px solid #eee;
+  min-width: 50%;
+  max-width: 80%;
+  padding:  0 40px;
+}
 .headlistitem{
   height: 120px;
-  width: 400px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
