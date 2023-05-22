@@ -28,6 +28,9 @@ onMounted(()=>{
 <template>
 
   <RouterView />
+  <div>
+    <p class="test">test scss</p>
+  </div>
   <!-- <el-button @click="getCategory" type="primary">获取列表信息</el-button>
   <el-button @click="clearCategory" type="primary">清空列表信息</el-button>
   <el-button type="success">success</el-button>
@@ -45,11 +48,12 @@ onMounted(()=>{
   <!-- <RouterView /> -->
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 html, body{
   height: 100%;
   width: 100%;
 }
+
 .headlist{
   padding: 0;
   margin: 0;
@@ -68,5 +72,8 @@ html, body{
 }
 .headlistitem:last-child{
   border-bottom: none;
+}
+.test{
+  color: $xtxColor
 }
 </style>
