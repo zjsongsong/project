@@ -21,12 +21,14 @@ const clearCategory= ()=>{
 }
 
 onMounted(()=>{
-  getCategory()
+  // getCategory()
 })
 </script>
 
 <template>
-  <el-button @click="getCategory" type="primary">获取列表信息</el-button>
+
+  <RouterView />
+  <!-- <el-button @click="getCategory" type="primary">获取列表信息</el-button>
   <el-button @click="clearCategory" type="primary">清空列表信息</el-button>
   <el-button type="success">success</el-button>
   <el-button type="warning">warning</el-button>
@@ -38,7 +40,7 @@ onMounted(()=>{
       <span>{{ item.name }}</span>
       <img :src="item.picture" alt="">
     </li>
-  </ul>
+  </ul> -->
 
   <!-- <RouterView /> -->
 </template>
@@ -52,7 +54,7 @@ html, body{
   padding: 0;
   margin: 0;
   border: 1px solid #eee;
-  min-width: 50%;
+  min-width: 400px;
   max-width: 80%;
   padding:  0 40px;
 }
