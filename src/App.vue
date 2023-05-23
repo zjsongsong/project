@@ -30,6 +30,7 @@ onMounted(()=>{
   <RouterView />
   <div>
     <p class="test">test scss</p>
+    <i class="iconfont icon-weibo"></i>
   </div>
   <!-- <el-button @click="getCategory" type="primary">获取列表信息</el-button>
   <el-button @click="clearCategory" type="primary">清空列表信息</el-button>
